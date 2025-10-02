@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+.diva{
+   box-shadow: 10px 23px 12px 0px rgba(139,53,53,0.75);
+-webkit-box-shadow: 10px 23px 12px 0px rgba(139,53,53,0.75);
+-moz-box-shadow: 10px 23px 12px 0px rgba(139,53,53,0.75);
+}
