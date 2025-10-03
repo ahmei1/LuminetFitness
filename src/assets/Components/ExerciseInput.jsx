@@ -13,7 +13,7 @@ export default function ExerciseInput({ onAdd }) {
       name: exercise,
       sets: sets || "-",
       reps: reps || "-",
-      date: new Date().toISOString().slice(0, 10)
+      date: new Date().toISOString().slice(0, 10),
     };
     onAdd(newEntry);
     setExercise("");
@@ -21,8 +21,10 @@ export default function ExerciseInput({ onAdd }) {
     setReps("");
   };
 
+  
+
   return (
-    <div className="mb-4 p-4 bg-white shadow rounded">
+    <div className="mb-4 p-4 bg-[#0F0E0E] shadow rounded">
       <input
         type="text"
         placeholder="Exercise name"
@@ -42,14 +44,15 @@ export default function ExerciseInput({ onAdd }) {
         placeholder="Reps"
         value={reps}
         onChange={(e) => setReps(e.target.value)}
-        className="border p-2 mr-2 rounded w-20"
+        className="border p-2 mr-3 rounded w-20"
       />
       <button
         onClick={handleAdd}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
+        className=" cursor-pointer bg-blue-500 text-white px-4 py-2 rounded"
       >
         Add
       </button>
+      
     </div>
   );
 }

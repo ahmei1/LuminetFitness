@@ -16,7 +16,7 @@ function Workoutexplorer() {
       });   
   }, []);
   return ( 
-    <div>{data}</div>
+    <div></div>
    );
 }
 

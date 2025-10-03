@@ -1,7 +1,9 @@
-import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend } from "chart.js";
-import { Bar } from "react-chartjs-2";
+// src/ExerciseChart.jsx
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, Title } from "chart.js";
+import { Pie } from "react-chartjs-2";
 
-ChartJS.register(BarElement, CategoryScale, LinearScale, Title, Tooltip, Legend);
+// Register Pie chart elements
+ChartJS.register(ArcElement, Tooltip, Legend, Title);
 
 export default function ExerciseChart({ targets }) {
   // Count duplicates
@@ -10,30 +12,26 @@ export default function ExerciseChart({ targets }) {
     return acc;
   }, {});
 
+  // Define colors for slices
+  const COLORS = [
+    "rgba(72, 58, 160, 0.9)",   // Purple
+    "rgba(255, 99, 132, 0.9)",  // Red
+    "rgba(54, 162, 235, 0.9)",  // Blue
+    "rgba(255, 206, 86, 0.9)",  // Yellow
+    "rgba(75, 192, 192, 0.9)",  // Teal
+    "rgba(153, 102, 255, 0.9)", // Violet
+    "rgba(255, 159, 64, 0.9)",  // Orange
+  ];
+
   const data = {
-    labels: Object.keys(counts),
+    labels: Object.keys(counts), // exercise names
     datasets: [
       {
-        label: "Exercise Targets Count",
-        data: Object.values(counts),
-        backgroundColor: "rgba(72, 58, 160, 1)",
+        label: "Exercise Distribution",
+        data: Object.values(counts), // number of times each exercise appears
+        backgroundColor: COLORS,
         borderColor: "white",
-        borderWidth: 1,
-        barPercentage: 0.5,
-        categoryPercentage: 0.5,
-        borderRadius: 5,
-        maxBarThickness: 100,
-        minBarLength: 2,
-        hoverBackgroundColor: "rgba(72, 58, 160, 0.8)",
-        hoverBorderColor: "white",
-        hoverBorderWidth: 2,
-        hoverRadius: 6,
-        hoverOffset: 4,
-        outerWidth: 5,
-        innerWidth: 5,
-        spacing: 2,
-        barThickness: 100,
-        
+        borderWidth: 2,
       },
     ],
   };
@@ -41,16 +39,10 @@ export default function ExerciseChart({ targets }) {
   const options = {
     responsive: true,
     plugins: {
-      legend: { display: true },
-      title: { display: true, text: "Exercise Target List Visualization" },
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        ticks: { stepSize: 10 },
-      },
+      legend: { position: "right" },
+      title: { display: true, text: "Exercise Target Distribution (Pie Chart)" },
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return <Pie data={data} options={options} width={300} height={300} />;
 }
