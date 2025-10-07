@@ -6,6 +6,7 @@ import Timer from "../assets/Components/Timer";
 import ExerciseInput from "../assets/Components/ExerciseInput";
 import ExerciseChart from "../assets/Components/ExerciseChart";
 import Bmrcalculation from "../assets/Components/BMR";
+import DailyChallenges from "../assets/Components/Todochallenges";
 
 function Dashboard() {
     const [exercises, setExercises] = useState([]);
@@ -30,23 +31,23 @@ function Dashboard() {
     const targets = exercises.map((ex) => ex.name);
 
     return (
-        <div className="bg-[#0F0E0E] min-h-screen font-[family:'Alan Sans']">
+        <div className="bg-[#0F0E0E] min-h-screen" style={{ fontFamily: 'Alan sans' }} >
             <Navbar />
 
             {/* Streak & Timer Section */}
             <section className="p-6 sm:p-10 bg-[#0F0E0E]">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-[#ccc8e6] font-bold">
-                    <div className="flex flex-col items-center justify-center p-6 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-72 sm:h-80 md:h-96 hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 text-3xl sm:text-4xl md:text-5xl">
+                    <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-72 sm:h-80 md:h-96 hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 text-3xl sm:text-4xl md:text-5xl">
                         <Streak />
                     </div>
-                    <div className="flex flex-col items-center justify-center p-6 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-72 sm:h-80 md:h-96 hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 text-3xl sm:text-4xl md:text-5xl">
+                    <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-72 sm:h-80 md:h-96 hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 text-3xl sm:text-4xl md:text-5xl">
                         <Timer />
                     </div>
                 </div>
             </section>
 
             {/* Exercises + Chart Section */}
-            <div className="flex flex-col md:flex-row bg-[#0F0E0E] text-[#ccc8e6] p-6 sm:p-8 m-6 sm:m-10 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 gap-6">
+            <div className="flex flex-col md:flex-row bg-[#0F0E0E] text-[#ccc8e6] p-6 sm:p-8 m-6 sm:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 gap-6">
 
                 {/* Left Side: Input + List + Workout Explorer */}
                 <div className="flex-1">
@@ -85,12 +86,22 @@ function Dashboard() {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col justify-center h-full  md:flex-row bg-[#0F0E0E] text-[#ccc8e6] p-20 sm:p-8 m-6 sm:m-10 rounded-lg shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 gap-6">
-                <Bmrcalculation/>
+            <div className="flex flex-col justify-center h-full  md:flex-row bg-[#0F0E0E] text-[#ccc8e6] p-20 sm:p-8 m-6 sm:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 gap-6">
+                <Bmrcalculation />
             </div>
+            <div className="flex flex-col justify-center h-full  md:flex-row bg-[#0F0E0E] text-[#ccc8e6] p-20 sm:p-8 m-6 sm:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 gap-6">
+                
+                <DailyChallenges />
+            </div>
+
+            <footer className="bg-[#0F0E0E] h-5">
+
+            </footer>
+
+            
         </div>
 
-        
+
     );
 }
 
