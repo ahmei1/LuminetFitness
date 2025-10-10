@@ -1,6 +1,6 @@
 import Navbar from "../assets/Components/Navbar";
-import Todochallenges from "../assets/Components/Todochallenges";
 import WorkoutExplorer from "../assets/Components/Workoutexplorer";
+import WorkoutScheduler from "../assets/Components/workoutschedule";
 
 
 export default function ProcessPage() {
@@ -9,7 +9,8 @@ export default function ProcessPage() {
     <div>
       <Navbar />
       <WorkoutExplorer />
-      <Todochallenges/>
+      <WorkoutScheduler />
+
     </div>
   );
 }

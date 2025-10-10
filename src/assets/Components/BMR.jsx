@@ -22,12 +22,12 @@ function Bmrcalculation() {
     const heightNum = Number(height);
 
     // Calculate BMR based on sex
-    if (sex.toLowerCase() === 'men' || sex.toLowerCase() === 'man' || sex.toLowerCase() === 'm') {
+    if (sex.toLowerCase() === 'male' || sex.toLowerCase() === 'man' || sex.toLowerCase() === 'm') {
       setResult(88.36 + (13.4 * weightNum) + (4.8 * heightNum) - (5.7 * ageNum));
-    } else if (sex.toLowerCase() === 'woman' || sex.toLowerCase() === 'women' || sex.toLowerCase() === 'w') {
+    } else if (sex.toLowerCase() === 'woman' || sex.toLowerCase() === 'female' || sex.toLowerCase() === 'w') {
       setResult(447.6 + (9.2 * weightNum) + (3.1 * heightNum) - (4.3 * ageNum));
     } else {
-      alert("Please enter a valid sex: 'man' or 'woman'");
+      alert("Please enter a valid sex: 'male' or 'female'");
     }
   }
 
@@ -37,7 +37,7 @@ function Bmrcalculation() {
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          placeholder="Sex (man/woman)"
+          placeholder="Sex (male/female)"
           value={sex}
           onChange={(e) => setSex(e.target.value)}
           className="border-2 p-3 m-4 rounded-2xl hover:scale-110 transform duration-300  hover:border-[#483AA0]"

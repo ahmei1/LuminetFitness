@@ -43,7 +43,7 @@ function DailyChallenges() {
     );
   };
 
-  // 🟢 Reset challenges
+  //  Reset challenges
   const resetChallenges = () => {
     if (window.confirm("Are you sure you want to reset today's challenges?")) {
       setChallenges([]);
@@ -112,7 +112,7 @@ function DailyChallenges() {
         <p>{challenges.filter(ch => ch.completed).length} / {challenges.length} done</p>
         <button
           onClick={resetChallenges}
-          className="text-red-500 hover:text-red-600 cursor-pointer"
+          className="text-red-500 hover:text-red-600 font-bold cursor-pointer"
         >
           Reset
         </button>
