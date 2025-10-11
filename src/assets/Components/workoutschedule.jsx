@@ -56,7 +56,7 @@ function WorkoutSchedule() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto p-6 bg-white shadow-xl rounded-2xl mt-6">
+    <div className="max-w-2xl flex flex-col justify-center mx-auto p-6   shadow-xl rounded-2xl mt-6">
       <h1 className="text-2xl font-bold text-center mb-4">🏋️‍♂️ Workout Schedule</h1>
 
       {/* Schedule Form */}
@@ -67,7 +67,7 @@ function WorkoutSchedule() {
           placeholder="Workout Name (e.g. Leg Day)"
           value={form.workoutName}
           onChange={handleChange}
-          className="w-full p-2 border rounded-lg"
+          className="w-full p-2 border rounded-lg hover:scale-103 hover:border-[#483AA0] transform duration-300 "
           required
         />
 
@@ -75,7 +75,7 @@ function WorkoutSchedule() {
           name="dayOfWeek"
           value={form.dayOfWeek}
           onChange={handleChange}
-          className="w-full p-2 border rounded-lg"
+          className="w-full p-2 border rounded-lg text-gray-500 font-bold hover:scale-103 hover:border-[#483AA0] transform duration-300"
           required
         >
           <option value="">Select Day</option>
@@ -99,7 +99,7 @@ function WorkoutSchedule() {
           name="time"
           value={form.time}
           onChange={handleChange}
-          className="w-full p-2 border rounded-lg"
+          className="w-full p-2 border rounded-lg hover:scale-103 hover:border-[#483AA0] transform duration-300"
           required
         />
 
@@ -109,7 +109,7 @@ function WorkoutSchedule() {
           placeholder="Duration (minutes)"
           value={form.duration}
           onChange={handleChange}
-          className="w-full p-2 border rounded-lg"
+          className="w-full p-2 border rounded-lg hover:scale-103 hover:border-[#483AA0] transform duration-300"
         />
 
         <textarea
@@ -117,12 +117,12 @@ function WorkoutSchedule() {
           placeholder="Notes (optional)"
           value={form.notes}
           onChange={handleChange}
-          className="w-full p-2 border rounded-lg"
+          className="w-full p-2 border rounded-lg hover:scale-103 hover:border-[#483AA0] transform duration-300"
         />
 
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition"
+          className="w-full p-3 border-2 text-2xl rounded-2xl hover:border-[#483AA0] transform duration-300 cursor-pointer"
         >
           Add to Schedule
         </button>
@@ -134,19 +134,19 @@ function WorkoutSchedule() {
         {schedules.length === 0 ? (
           <p className="text-gray-500">No workouts scheduled yet.</p>
         ) : (
-          <ul className="space-y-3">
+          <ul className="space-y-3 max-h-64 overflow-y-auto pr-2">
             {schedules.map((s) => (
               <li
                 key={s.id}
-                className="border p-4 rounded-xl bg-gray-50 shadow-sm flex justify-between items-start"
+                className="border p-4 rounded-xl shadow-sm flex justify-between items-start"
               >
                 <div>
                   <p className="font-semibold text-lg">{s.workoutName}</p>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-gray-400">
                     {s.dayOfWeek} — {s.time}
                   </p>
                   {s.duration && (
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-gray-400">
                       Duration: {s.duration} min
                     </p>
                   )}
@@ -156,7 +156,7 @@ function WorkoutSchedule() {
                 </div>
                 <button
                   onClick={() => handleDelete(s.id)}
-                  className="text-red-500 hover:text-red-700 text-sm"
+                  className="text-red-500 hover:text-red-700 text-sm cursor-pointer"
                 >
                   Delete
                 </button>
@@ -165,6 +165,7 @@ function WorkoutSchedule() {
           </ul>
         )}
       </div>
+
     </div>
   );
 }

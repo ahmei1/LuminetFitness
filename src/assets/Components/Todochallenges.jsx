@@ -65,17 +65,17 @@ function DailyChallenges() {
 
 
 
-      <div className="flex mb-4 justify-center items-center gap-2">
+      <div className="flex mb-4 justify-center sm:flex-col items-center gap-2">
         <input
           type="text"
           value={text}
           onChange={e => setText(e.target.value)}
           placeholder="Enter a challenge..."
-          className="border-2 border-gray-300 p-3 w-full sm:w-48 rounded-2xl hover:scale-110 hover:border-[#483AA0] transform duration-300 focus:border-[#483AA0] outline-none"
+          className="border-2  border-gray-300 p-3 w-full sm:w-full rounded-2xl hover:scale-105 hover:border-[#483AA0] transform duration-300 focus:border-[#483AA0] outline-none"
         />
         <button
           onClick={addChallenge}
-          className="m-2 p-2 h-fit w-fit  border-2 text-2xl rounded-2xl hover:border-[#483AA0] transform duration-300 cursor-pointer"
+          className="m-2 p-2 h-fit w-35  border-2 text-2xl rounded-2xl hover:border-[#483AA0] transform duration-300 cursor-pointer"
         >
           Add
         </button>

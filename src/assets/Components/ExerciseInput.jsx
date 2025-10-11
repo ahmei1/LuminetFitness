@@ -4,6 +4,7 @@ export default function ExerciseInput({ onAdd }) {
   const [exercise, setExercise] = useState("");
   const [sets, setSets] = useState("");
   const [reps, setReps] = useState("");
+  const [weight, setweight] = useState("");
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -13,6 +14,7 @@ export default function ExerciseInput({ onAdd }) {
       name: exercise,
       sets: sets || "-",
       reps: reps || "-",
+      weight: weight,
       date: new Date().toISOString().slice(0, 10),
     };
     onAdd(newEntry);
@@ -40,6 +42,13 @@ export default function ExerciseInput({ onAdd }) {
           placeholder="Sets"
           value={sets}
           onChange={(e) => setSets(e.target.value)}
+          className="border-2 border-gray-300 p-2 w-full sm:w-24 rounded-2xl hover:scale-110 hover:border-[#483AA0] transform duration-300 focus:border-[#483AA0] outline-none"
+        />
+        <input
+          type="number"
+          placeholder="weight"
+          value={weight}
+          onChange={(e) => setweight(e.target.value)}
           className="border-2 border-gray-300 p-2 w-full sm:w-24 rounded-2xl hover:scale-110 hover:border-[#483AA0] transform duration-300 focus:border-[#483AA0] outline-none"
         />
 

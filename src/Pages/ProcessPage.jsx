@@ -1,6 +1,6 @@
 import Navbar from "../assets/Components/Navbar";
+import Welcome from "../assets/Components/welcome";
 import WorkoutExplorer from "../assets/Components/Workoutexplorer";
-import WorkoutScheduler from "../assets/Components/workoutschedule";
 
 
 export default function ProcessPage() {
@@ -9,7 +9,7 @@ export default function ProcessPage() {
     <div>
       <Navbar />
       <WorkoutExplorer />
-      <WorkoutScheduler />
+      <Welcome />
 
     </div>
   );
