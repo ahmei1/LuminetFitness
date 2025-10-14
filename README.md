@@ -1,17 +1,31 @@
-# React + Vite
+Welcome to Luminet Fitness — your personal fitness companion built with React!
+This app helps you plan, track, and explore workouts in a simple and motivating way.
+Whether you’re just starting or already on your fitness journey, Luminet gives you the tools to stay consistent and organized.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+✨ Features
 
-Currently, two official plugins are available:
+🏋️‍♂️ Workout Explorer: Browse exercises from the WGER API and find workouts that match your goals.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+📅 Workout Scheduler: Create your own weekly workout plan and save it using localStorage — so your progress stays even after you close the app.
 
-## React Compiler
+📝 Notes Section: Add notes or reminders for each workout session.
 
-The React Compiler is not enabled on this template. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+📱 Responsive Design: Works smoothly on mobile, tablet, and desktop
 
-## Expanding the ESLint configuration
+How It Works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# LuminetFitness
+Open the app.
+
+Explore workouts and find your favorites.
+
+Schedule your sessions for the week and add personal notes.
+
+Your workouts are automatically saved in your browser.
+
+Simple, clean, and no sign-up required!
+
+Future Improvements
+
+Add user authentication (login and signup).
+
+Enable dark/light theme switching.
