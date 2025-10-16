@@ -15,7 +15,7 @@ function Home() {
       {/* HERO SECTION */}
       <section className='bg-[url("/src/tools/ambitious-studio-rick-barrett-03b61PY89hs-unsplash.jpg")] min-h-screen bg-cover bg-center'>
         <Navbar />
-        <div className="flex flex-col items-center justify-center text-center text-[#ccc8e6] p-4 h-[80vh]">
+        <div className="flex flex-col items-center justify-center text-center text-[#e2e1ee] p-4 h-[80vh]">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-[90%]">
             <span className="text-[#483AA0] font-bold text-5xl sm:text-6xl">LUMINET</span> FITNESS — YOUR GATEWAY TO YOUR DREAM PHYSIQUE
           </h1>

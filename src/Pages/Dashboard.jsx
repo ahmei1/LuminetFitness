@@ -34,7 +34,7 @@ function Dashboard() {
 
   return (
     <div className="bg-[#0F0E0E] min-h-screen" style={{ fontFamily: "Alan sans" }}>
-      
+
       <Navbar />
 
       {/* Welcome + Streak + Timer Section */}
@@ -63,7 +63,11 @@ function Dashboard() {
       <section className="flex flex-col md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-8 hover:scale-102 hover:border-[#483AA0]">
         {/* Left Side: Input + List */}
         <div className="flex-1">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">Today's Exercises</h2>
+          <p className="font-bold text-3xl "> <span className="text-[#483AA0]">Write the exercises </span>you need to improve in and track the improvements using the charts</p>
+          <br />
+          <hr />
+
+          <h2 className="p-2 text-lg sm:text-xl md:text-2xl ">Today's Exercises</h2>
           <ExerciseInput onAdd={handleAdd} />
           <div className="mt-4 w-full max-w-full sm:max-w-lg h-56 sm:h-72 md:h-80 overflow-y-auto">
             <ul className="space-y-2">
@@ -98,17 +102,38 @@ function Dashboard() {
 
       {/* Workout Schedule */}
       <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
-        <WorkoutSchedule />
+        <div className="flex-row">
+
+          <p className="font-bold text-3xl sm:text-2xl md:text-2xl"> <span className="text-[#483AA0]">Create your workout </span> routine and record your progress </p>
+          <br />
+          <hr />
+          <WorkoutSchedule />
+        </div>
       </section>
 
       {/* BMR Calculation */}
       <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
-        <Bmrcalculation />
+        <div className="flex-row">
+
+          <p className="font-bold text-2xl sm:text-2xl md:text-2xl"> <span className="text-[#483AA0]">BMR Calculator —  </span> Find out how many calories your body burns at rest to plan your fitness goals smarter. </p>
+          <br />
+          <hr />
+          <Bmrcalculation />
+
+        </div>
       </section>
 
       {/* Daily Challenges */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
-        <DailyChallenges />
+      <section className="flex flex-col justify-center items-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
+        
+        <div className="flex-row place-items-center">
+
+          <p className="text-2xl font-bold"><span className="text-[#483AA0]">Daily 3 Challenges — </span> Get three fresh daily tasks to stay active and motivated.</p>
+          <br />
+          
+             <DailyChallenges />
+
+        </div>
       </section>
 
       <footer className="bg-[#0F0E0E] h-5"></footer>

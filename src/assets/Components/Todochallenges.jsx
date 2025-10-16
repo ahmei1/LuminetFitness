@@ -56,7 +56,7 @@ function DailyChallenges() {
   }
 
   return (
-    <div className=" p-20 w-fit">
+    <div className="p-10 w-fit">
       <h2 className="text-4xl font-bold mb-4 text-center">Daily Challenges 💪</h2>
       <h3 className="p-6 text-2xl">Add 3 challenges To-do everyday and discipline yourself</h3>
 
@@ -65,7 +65,7 @@ function DailyChallenges() {
 
 
 
-      <div className="flex mb-4 justify-center sm:flex-col items-center gap-2">
+      <div className="flex mb-4 justify-center  sm:flex-col items-center gap-2">
         <input
           type="text"
           value={text}
