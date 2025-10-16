@@ -1,15 +1,14 @@
 import Navbar from "../assets/Components/Navbar";
-import Welcome from "../assets/Components/welcome";
 import WorkoutExplorer from "../assets/Components/Workoutexplorer";
 
 
-export default function ProcessPage() {
+export default function Explore() {
 
   return (
-    <div>
+    <div className="bg-[#0F0E0E]">
       <Navbar />
       <WorkoutExplorer />
-      <Welcome />
+    
 
     </div>
   );

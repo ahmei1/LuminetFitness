@@ -50,19 +50,19 @@ function Timer() {
 
       <div className="flex flex-wrap gap-3 justify-center mt-2 ">
         <button
-          className="cursor-pointer py-2 px-4 sm:px-6 rounded-2xl border border-[#ccc8e6] text-[#ccc8e6] hover:border-[#483AA0] transform duration-200 text-sm sm:text-base"
+          className="cursor-pointer py-2 px-4 sm:px-6 rounded-2xl border-2 border-[#ccc8e6] text-[#ccc8e6] hover:border-[#483AA0] transform duration-200 text-sm sm:text-base"
           onClick={handleStart}
         >
           Start
         </button>
         <button
-          className="cursor-pointer py-2 px-4 sm:px-6 rounded-2xl border border-[#ccc8e6] text-[#ccc8e6] hover:border-[#483AA0] transform duration-200 text-sm sm:text-base"
+          className="cursor-pointer py-2 px-4 sm:px-6 rounded-2xl border-2 border-[#ccc8e6] text-[#ccc8e6] hover:border-[#483AA0] transform duration-200 text-sm sm:text-base"
           onClick={handleStop}
         >
           Stop
         </button>
         <button
-          className="cursor-pointer py-2 px-4 sm:px-6 rounded-2xl border border-[#ccc8e6] text-[#ccc8e6] hover:border-[#483AA0] transform duration-200 text-sm sm:text-base"
+          className="cursor-pointer py-2 px-4 sm:px-6 rounded-2xl border-2 border-[#ccc8e6] text-[#ccc8e6] hover:border-[#483AA0] transform duration-200 text-sm sm:text-base"
           onClick={handleReset}
         >
           Reset

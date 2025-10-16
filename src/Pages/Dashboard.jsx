@@ -8,6 +8,7 @@ import Bmrcalculation from "../assets/Components/BMR";
 import DailyChallenges from "../assets/Components/Todochallenges";
 import WorkoutSchedule from "../assets/Components/workoutschedule";
 import Welcome from "../assets/Components/welcome";
+import Quotes from "../assets/Components/Qoutes";
 
 function Dashboard() {
   const [exercises, setExercises] = useState([]);
@@ -33,28 +34,33 @@ function Dashboard() {
 
   return (
     <div className="bg-[#0F0E0E] min-h-screen" style={{ fontFamily: "Alan sans" }}>
+      
       <Navbar />
 
       {/* Welcome + Streak + Timer Section */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
+      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
           {/* Welcome */}
-          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-2xl sm:text-3xl md:text-5xl font-bold hover:scale-102 hover:border-[#483AA0] transform duration-300">
+          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-2xl sm:text-3xl md:text-5xl font-bold hover:border-[#483AA0] transform duration-300">
             <Welcome />
           </div>
           {/* Streak */}
-          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-2xl sm:text-3xl md:text-5xl font-bold hover:scale-102 hover:border-[#483AA0] transform duration-300">
+          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-2xl sm:text-3xl md:text-5xl font-bold hover:border-[#483AA0] transform duration-300">
             <Streak />
           </div>
           {/* Timer */}
-          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-xl sm:text-3xl md:text-6xl font-bold hover:scale-102 hover:border-[#483AA0] transform duration-300">
+          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-xl sm:text-3xl md:text-6xl font-bold hover:border-[#483AA0] transform duration-300">
             <Timer />
           </div>
+          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-xl sm:text-3xl md:text-6xl font-bold hover:border-[#483AA0] transform duration-300">
+            <Quotes />
+          </div>
+
         </div>
       </section>
 
       {/* Exercises + Chart Section */}
-      <section className="flex flex-col md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-8">
+      <section className="flex flex-col md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-8 hover:scale-102 hover:border-[#483AA0]">
         {/* Left Side: Input + List */}
         <div className="flex-1">
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4">Today's Exercises</h2>
@@ -82,7 +88,7 @@ function Dashboard() {
         </div>
 
         {/* Right Side: Chart */}
-        <div className="flex-1 flex justify-center items-start mt-10 md:mt-0">
+        <div className="flex-1 flex justify-center items-start mt-10 md:mt-0 ">
           <div className="w-full max-w-md h-64 sm:h-80 md:h-96">
             <h2 className="text-lg sm:text-xl font-bold mb-4 text-[#ccc8e6]">Exercise Tracking Chart</h2>
             <ExerciseChart targets={targets} />
@@ -91,17 +97,17 @@ function Dashboard() {
       </section>
 
       {/* Workout Schedule */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6">
+      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
         <WorkoutSchedule />
       </section>
 
       {/* BMR Calculation */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6">
+      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
         <Bmrcalculation />
       </section>
 
       {/* Daily Challenges */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6">
+      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
         <DailyChallenges />
       </section>
 
