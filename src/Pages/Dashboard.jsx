@@ -128,8 +128,10 @@ function Dashboard() {
         
         <div className="flex-row place-items-center">
 
-          <p className="text-2xl font-bold"><span className="text-[#483AA0]">Daily 3 Challenges — </span> Get three fresh daily tasks to stay active and motivated.</p>
+          <p className="text-2xl font-bold p-2"><span className="text-[#483AA0]">Daily 3 Challenges — </span> Get three fresh daily tasks to stay active and motivated.</p>
           <br />
+          <hr className="border-t border-white w-full my-2" />
+
           
              <DailyChallenges />
 
