@@ -12,7 +12,7 @@ function Quotes() {
     "Your mindset determines your reality.",
     "The pain you feel today builds the strength you need tomorrow.",
     "The body achieve what the mind believe",
-    "Success is somthing you attract by the person you become",
+    "Success is something you attract by the person you become",
     "Enjoy being in the process of becoming",
     "You've got to get up every morning with determination if you're going to go to bed with satisfaction.",
     "The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy.",
@@ -26,20 +26,20 @@ function Quotes() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prevIndex) => (prevIndex + 1) % listOfQuotes.length);
-    }, 5000); 
-
+    }, 5000);
     return () => clearInterval(interval);
   }, [listOfQuotes.length]);
 
   return (
-    <div className="flex justify-center items-center h-screen bg-[#0F0E0E] text-[#e6e2c8] font-bold text-5xl">
+    <div className="flex justify-center items-center h-screen bg-[#0F0E0E] text-[#e6e2c8] font-bold text-center px-4">
       <AnimatePresence mode="wait">
         <motion.p
           key={index}
-          initial={{ opacity: 0, y: 20 }}     
-          animate={{ opacity: 1, y: 0 }}       
-          exit={{ opacity: 0, y: -20 }}        
-          transition={{ duration: 0.8 }}      
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.8 }}
+          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug sm:leading-normal max-w-5xl"
         >
           {listOfQuotes[index]}
         </motion.p>
