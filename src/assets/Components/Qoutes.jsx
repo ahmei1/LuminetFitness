@@ -15,7 +15,6 @@ function Quotes() {
     "Success is something you attract by the person you become",
     "Enjoy being in the process of becoming",
     "You've got to get up every morning with determination if you're going to go to bed with satisfaction.",
-    "The ultimate measure of a man is not where he stands in moments of comfort and convenience, but where he stands at times of challenge and controversy.",
     "However difficult life may seem, there is always something you can do and succeed at.",
     "Tell me and I forget. Teach me and I remember. Involve me and I learn.",
     "Doing the best at this moment puts you in the best place for the next moment."
