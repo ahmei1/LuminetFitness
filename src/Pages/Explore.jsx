@@ -8,6 +8,7 @@ export default function Explore() {
     <div className="bg-[#0F0E0E]">
       <Navbar />
       <WorkoutExplorer />
+      <footer className="bg-[#0F0E0E] h-10"></footer>
     
 
     </div>
