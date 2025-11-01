@@ -28,36 +28,36 @@ const WorkoutExplorer = () => {
       { id: 12, name: "Barbell row", img: "src/tools/R.gif", description: "The barbell row is an effective compound exercise that targets the upper and middle back, helping to build strength and muscle mass." },
     ],
     shoulders: [
-      { id: 1, name: "Overhead Press", img: "/tools/shoulder1.jpg", description: "Core shoulder strength builder." },
-      { id: 2, name: "Lateral Raises", img: "/tools/shoulder2.jpg", description: "Widens shoulder width." },
-      { id: 3, name: "Front Raises", img: "/tools/shoulder3.jpg", description: "Targets anterior deltoids." },
-      { id: 4, name: "Arnold Press", img: "/tools/shoulder4.jpg", description: "Great all-around deltoid workout." },
-      { id: 5, name: "Reverse Fly", img: "/tools/shoulder5.jpg", description: "Builds rear shoulder balance." },
-      { id: 6, name: "Upright Row", img: "/tools/shoulder6.jpg", description: "Engages traps and delts together." },
+      { id: 1, name: "Overhead Press", img: "src/tools/Dumbbell-Shoulder-Press.gif", description: "The overhead press is a fundamental upper-body exercise that builds strength in the shoulders, triceps, and upper chest, making it essential for overall upper body development." },
+      { id: 2, name: "Lateral Raises", img: "src/tools/anim-dumbbell-lateral-raise.gif", description: "The lateral raise is an isolation exercise designed to target specific muscles within your shoulders. Whether you perform it with dumbbells, kettlebells, or cables, lateral raises primarily target the medial deltoids on the sides of your shoulders." },
+      { id: 3, name: "Front Raises", img: "src/tools/anim-dumbbell-front-raises.gif", description: "Front raises are an effective shoulder exercise that primarily targets the anterior deltoid, helping to build strength and definition in the shoulders." },
+      { id: 4, name: "Arnold Press", img: "src/tools/Arnold-Press.gif", description: "Because the Arnold Press utilizes a fuller range of motion, you’re increasing demand on your rear delts, in addition to the lateral and anterior delts activated by the traditional shoulder press movement. " },
+      { id: 5, name: "Reverse Fly", img: "src/tools/R (1).gif", description: "Reverse Fly helps improve posture, stability, and shoulder strength, while also protecting against injuries." },
+      { id: 6, name: "Upright Row", img: "src/tools/R (2).gif", description: "The upright row is a compound weightlifting exercise that involves multiple joints and simultaneously engages several muscle groups. It primarily targets the deltoids (shoulders) and trapezius" },
     ],
     legs: [
-      { id: 1, name: "Squats", img: "/tools/leg1.jpg", description: "King of lower-body strength." },
-      { id: 2, name: "Lunges", img: "/tools/leg2.jpg", description: "Builds quads and glutes." },
-      { id: 3, name: "Leg Press", img: "/tools/leg3.jpg", description: "Targets quads under control." },
-      { id: 4, name: "Leg Extension", img: "/tools/leg4.jpg", description: "Isolates front thighs." },
-      { id: 5, name: "Leg Curl", img: "/tools/leg5.jpg", description: "Strengthens hamstrings." },
-      { id: 6, name: "Calf Raise", img: "/tools/leg6.jpg", description: "Improves calf muscle definition." },
+      { id: 1, name: "Squats", img: "src/tools/barbell-full-squat.gif", description: "Squats build lower body muscle strength,2﻿ endurance, and power. Additionally, they engage the core and improve strength and stability in the trunk and upper body." },
+      { id: 2, name: "Lunges", img: "src/tools/bodyweight-forward-lunge.gif", description: "Lunges are a powerful exercise that helps to build strength in your lower body, targeting muscles such as the quadriceps, hamstrings, glutes, and calves." },
+      { id: 3, name: "Leg Press", img: "src/tools/R (3).gif", description: "The leg press is a seated compound exercise in which an individual pushes weight or resistance away from their body, using their legs. The leg press works the quadriceps and the gluteal muscles and is performed using a leg press machine." },
+      { id: 4, name: "Leg Extension", img: "src/tools/R (4).gif", description: "Leg extensions are an isolation exercise primarily targeting the quadriceps, helping to build strength and muscle definition in the front of the thighs." },
+      { id: 5, name: "Leg Curl", img: "src/tools/R (5).gif", description: "The leg curl is an effective exercise primarily targeting the hamstring muscles, helping to improve strength, flexibility, and overall athletic performance." },
+      { id: 6, name: "Calf Raise", img: "src/tools/R (6).gif", description: "Calf raises are a simple yet effective exercise that strengthens the calf muscles, improves balance, and enhances overall lower body performance." },
     ],
     biceps: [
-      { id: 1, name: "Barbell Curl", img: "/tools/biceps1.jpg", description: "Classic bicep mass builder." },
-      { id: 2, name: "Dumbbell Curl", img: "/tools/biceps2.jpg", description: "Works each arm independently." },
-      { id: 3, name: "Hammer Curl", img: "/tools/biceps3.jpg", description: "Targets brachialis for width." },
-      { id: 4, name: "Concentration Curl", img: "/tools/biceps4.jpg", description: "Focuses on peak contraction." },
-      { id: 5, name: "Cable Curl", img: "/tools/biceps5.jpg", description: "Constant tension for growth." },
-      { id: 6, name: "Preacher Curl", img: "/tools/biceps6.jpg", description: "Strict form for full isolation." },
+      { id: 1, name: "Barbell Curl", img: "src/tools/R (7).gif", description: "The barbell curl is a fundamental exercise for building bicep strength and size, primarily targeting the biceps brachii muscle." },
+      { id: 2, name: "Dumbbell Curl", img: "src/tools/R (8).gif", description: "Dumbbell curls are a single-joint movement, making them excellent for isolating and sculpting the biceps." },
+      { id: 3, name: "Hammer Curl", img: "src/tools/453818257067e0df3ee77eb9d184f015.gif", description: "A hammer curl is a variation of the biceps curl and targets muscles in the upper and lower arm. While this exercise is almost always performed with a dumbbell, you can do it with cables or bands. Hammer curls are a great addition to your upper-body strength routine." },
+      { id: 4, name: "Concentration Curl", img: "src/tools/R (9).gif", description: "The concentration curl is an effective isolation exercise that targets the biceps, helping to build strength and improve muscle definition." },
+      { id: 5, name: "Cable Curl", img: "src/tools/R (10).gif", description: "Cable curls allow for better control and stability during the movement, reducing the risk of using momentum to lift the weight. This focus on form helps ensure that the biceps are effectively targeted, maximizing the benefits of the exercise." },
+      { id: 6, name: "Preacher Curl", img: "src/tools/R (11).gif", description: "Preacher curls are a bicep isolation exercise performed on a preacher curl bench, which allows you to focus on building stronger biceps." },
     ],
     triceps: [
-      { id: 1, name: "Tricep Pushdown", img: "/tools/triceps1.jpg", description: "Defines and tones triceps." },
-      { id: 2, name: "Overhead Extension", img: "/tools/triceps2.jpg", description: "Stretches long head of triceps." },
-      { id: 3, name: "Close Grip Bench Press", img: "/tools/triceps3.jpg", description: "Adds mass to triceps." },
-      { id: 4, name: "Skull Crushers", img: "/tools/triceps4.jpg", description: "Isolates triceps efficiently." },
-      { id: 5, name: "Dips", img: "/tools/triceps5.jpg", description: "Bodyweight exercise for strength." },
-      { id: 6, name: "Kickbacks", img: "/tools/triceps6.jpg", description: "Perfect for shaping and detail." },
+      { id: 1, name: "Tricep Pushdown", img: "src/tools/R (12).gif", description: "The triceps pushdown is an effective exercise for isolating and strengthening the triceps muscles, typically performed using a cable machine." },
+      { id: 2, name: "Overhead Extension", img: "src/tools/CABLE_OHT_EXT.gif", description: "The overhead extension, specifically the overhead triceps extension, is a powerful exercise that targets and strengthens the triceps muscles." },
+      { id: 3, name: "Close Grip Bench Press", img: "src/tools/Close-Grip-Bench-Press.gif", description: "The close grip bench press is an effective exercise for targeting the triceps while also engaging the chest and shoulders, making it a valuable addition to any upper body workout routine." },
+      { id: 4, name: "Skull Crushers", img: "src/tools/flat-bench-skull-crusher.gif", description: "Skull crushers are an effective exercise for building triceps strength, improving upper body stability, and enhancing overall functional fitness." },
+      { id: 5, name: "Triceps Dips", img: "src/tools/R (13).gif", description: "Triceps dips are an effective bodyweight exercise that targets the triceps, shoulders, and chest, helping to build upper body strength." },
+      { id: 6, name: "Kickbacks", img: "src/tools/R (14).gif", description: "Tricep kickbacks are an effective isolation exercise that targets the triceps muscles at the back of your upper arms." },
     ],
   });
 
@@ -73,7 +73,7 @@ const WorkoutExplorer = () => {
           <button
             key={muscle}
             onClick={() => setSelected(muscle)}
-            className={`px-5 py-2 rounded-xl text-sm sm:text-base font-semibold transition-all duration-300 cursor-pointer ${
+            className={`px-5 py-2 rounded-xl text-sm sm:text-base font-semibold  transition-all hover:border-[#483AA0] border-2 border-[#2A2930] duration-300 cursor-pointer ${
               selected === muscle
                 ? "bg-[#6D28D9] text-white"
                 : "bg-[#1A1919] hover:bg-[#2A2930]"
