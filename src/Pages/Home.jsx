@@ -1,19 +1,20 @@
 import Navbar from "../assets/Components/Navbar";
 import { Link } from "react-router-dom";
-import img from "../tools/10775757.jpg";
-import caloriesimg from "../tools/pickled-stardust-WTDiM3nezLQ-unsplash.jpg";
-import chartimg from "../tools/5143506.jpg";
-import streakemoji from "../tools/d689a403-5351-4e58-9328-7a13cda3cee8.jpg";
-import exercisetrackerimg from "../tools/Wavy_Edu-04_Single-06.jpg";
-import challengesimg from "../tools/bwink_ppl_08_single_04.jpg";
-import linkedinimg from "../tools/linkedin_2504923.png";
-import githubimg from "../tools/github_270798.png";
+import img from "/tools/10775757.jpg";
+import caloriesimg from "/tools/pickled-stardust-WTDiM3nezLQ-unsplash.jpg";
+import chartimg from "/tools/5143506.jpg";
+import streakemoji from "/tools/d689a403-5351-4e58-9328-7a13cda3cee8.jpg";
+import exercisetrackerimg from "/tools/Wavy_Edu-04_Single-06.jpg";
+import challengesimg from "/tools/bwink_ppl_08_single_04.jpg";
+import linkedinimg from "/tools/linkedin_2504923.png";
+import githubimg from "/tools/github_270798.png";
+
 
 function Home() {
   return (
     <div className="bg-[#0f0e0e]" style={{ fontFamily: "Alan Sans" }}>
       {/* HERO SECTION */}
-      <section className='bg-[url("/src/tools/ambitious-studio-rick-barrett-03b61PY89hs-unsplash.jpg")] min-h-screen bg-cover bg-center'>
+      <section className='bg-[url("/tools/ambitious-studio-rick-barrett-03b61PY89hs-unsplash.jpg")] min-h-screen bg-cover bg-center'>
         <Navbar />
         <div className="flex flex-col items-center justify-center text-center text-[#e2e1ee] p-4 h-[80vh]">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight max-w-[90%]">
