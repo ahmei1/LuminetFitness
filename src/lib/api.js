@@ -1,5 +1,9 @@
 const TOKEN_KEY = "luminet_token";
 
+// Local Vite proxies /api → localhost:4000.
+// On Vercel, set VITE_API_URL to your hosted API (e.g. https://luminet-api.onrender.com).
+const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "");
+
 export function getToken() {
   return localStorage.getItem(TOKEN_KEY);
 }
@@ -21,7 +25,7 @@ async function request(path, options = {}) {
   const token = getToken();
   if (token) headers.Authorization = `Bearer ${token}`;
 
-  const res = await fetch(`/api${path}`, {
+  const res = await fetch(`${API_BASE}/api${path}`, {
     ...options,
     headers,
     body: options.body ? JSON.stringify(options.body) : undefined,
