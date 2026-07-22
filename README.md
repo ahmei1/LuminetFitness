@@ -1,31 +1,59 @@
-Welcome to Luminet Fitness — your personal fitness companion built with React!
-This app helps you plan, track, and explore workouts in a simple and motivating way.
-Whether you’re just starting or already on your fitness journey, Luminet gives you the tools to stay consistent and organized.
+# Luminet Fitness V2
 
-✨ Features
+Personal fitness companion — plan workouts, log lifts, track progress, and keep a streak. Accounts sync your dashboard data through a local Express API.
 
-🏋️‍♂️ Workout Explorer: Browse exercises from the WGER API and find workouts that match your goals.
+## Features
 
-📅 Workout Scheduler: Create your own weekly workout plan and save it using localStorage — so your progress stays even after you close the app.
+- **Auth** — signup / login with JWT
+- **Cloud dashboard** — exercises, weekly schedule, challenges, and streak per user
+- **Progress charts** — weight and volume over time per exercise
+- **Personal records** — auto-updated from your logs
+- **Rest timer** — 60 / 90 / 120s presets between sets
+- **Body weight log** — simple trend line
+- **Workout explorer** — browse by muscle group and add to today’s log
+- **BMR calculator** — resting calorie estimate
 
-📝 Notes Section: Add notes or reminders for each workout session.
+## Stack
 
-📱 Responsive Design: Works smoothly on mobile, tablet, and desktop
+- React 19 + Vite + Tailwind CSS 4 + Chart.js
+- Express + Prisma + SQLite + JWT (in `/server`)
 
-How It Works
+## Setup
 
-Open the app.
+```bash
+# Install frontend + server dependencies
+npm install
 
-Explore workouts and find your favorites.
+# Create / update the SQLite database
+npm run db:push
 
-Schedule your sessions for the week and add personal notes.
+# Run web + API together
+npm run dev:all
+```
 
-Your workouts are automatically saved in your browser.
+- App: http://localhost:5173  
+- API: http://localhost:4000  
 
-Simple, clean, and no sign-up required!
+Or run them separately:
 
-Future Improvements
+```bash
+npm run server:dev   # API on :4000
+npm run dev          # Vite on :5173 (proxies /api → :4000)
+```
 
-Add user authentication (login and signup).
+## Scripts
 
-Enable dark/light theme switching.
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Frontend only |
+| `npm run server:dev` | API with file watch |
+| `npm run dev:all` | Both concurrently |
+| `npm run db:push` | Apply Prisma schema to SQLite |
+| `npm run build` | Production frontend build |
+
+## Notes
+
+- Dashboard routes require login.
+- On first login, if your cloud data is empty and old browser `localStorage` data exists, it is imported once.
+- SQLite file lives at `server/prisma/dev.db` (gitignored).
+- Set `JWT_SECRET` in the environment for production.

@@ -1,146 +1,247 @@
-import { useState, useEffect } from "react";
-import Navbar from "../assets/Components/Navbar";
-import Streak from "../assets/Components/streaks";
-import Timer from "../assets/Components/Timer";
-import ExerciseInput from "../assets/Components/ExerciseInput";
-import ExerciseChart from "../assets/Components/ExerciseChart";
-import Bmrcalculation from "../assets/Components/BMR";
-import DailyChallenges from "../assets/Components/Todochallenges";
-import WorkoutSchedule from "../assets/Components/workoutschedule";
-import Welcome from "../assets/Components/welcome";
-import Quotes from "../assets/Components/Qoutes";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Streak from "../components/Streak";
+import RestTimer from "../components/RestTimer";
+import ExerciseInput from "../components/ExerciseInput";
+import ProgressChart from "../components/ProgressChart";
+import WorkoutSchedule from "../components/WorkoutSchedule";
+import BMR from "../components/BMR";
+import DailyChallenges from "../components/DailyChallenges";
+import BodyWeight from "../components/BodyWeight";
+import PersonalRecords from "../components/PersonalRecords";
+import { useAuth } from "../context/AuthContext";
+import { api } from "../lib/api";
+import { maybeImportLocalData } from "../lib/migrateLocal";
 
-function Dashboard() {
+export default function Dashboard() {
+  const { user } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const [exercises, setExercises] = useState([]);
+  const [schedules, setSchedules] = useState([]);
+  const [challenges, setChallenges] = useState([]);
+  const [streak, setStreak] = useState({ currentStreak: 0, bestStreak: 0 });
+  const [prs, setPrs] = useState([]);
+  const [bodyWeights, setBodyWeights] = useState([]);
+  const [pendingExercise, setPendingExercise] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [importNote, setImportNote] = useState("");
+
+  const refresh = async () => {
+    const [ex, sch, ch, st, pr, bw] = await Promise.all([
+      api.getExercises(),
+      api.getSchedules(),
+      api.getChallenges(),
+      api.getStreak(),
+      api.getPRs(),
+      api.getBodyWeight(),
+    ]);
+    setExercises(ex.exercises || []);
+    setSchedules(sch.schedules || []);
+    setChallenges(ch.challenges || []);
+    setStreak(st.streak || { currentStreak: 0, bestStreak: 0 });
+    setPrs(pr.records || []);
+    setBodyWeights(bw.entries || []);
+  };
 
   useEffect(() => {
-    const stored = JSON.parse(localStorage.getItem("dailyExercises")) || [];
-    setExercises(stored);
+    let cancelled = false;
+    (async () => {
+      try {
+        setLoading(true);
+        const note = await maybeImportLocalData();
+        if (!cancelled && note) setImportNote(note);
+        await refresh();
+      } catch (err) {
+        if (!cancelled) setError(err.message || "Failed to load dashboard");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  const handleAdd = (entry) => {
-    const updated = [entry, ...exercises];
-    setExercises(updated);
-    localStorage.setItem("dailyExercises", JSON.stringify(updated));
+  useEffect(() => {
+    const name = location.state?.exerciseName;
+    if (name) {
+      setPendingExercise(name);
+      navigate(location.pathname, { replace: true, state: {} });
+    }
+  }, [location, navigate]);
+
+  const handleAddExercise = async (entry) => {
+    await api.addExercise(entry);
+    await refresh();
+    setPendingExercise("");
   };
 
-  const handleDelete = (id) => {
-    const updated = exercises.filter((ex) => ex.id !== id);
-    setExercises(updated);
-    localStorage.setItem("dailyExercises", JSON.stringify(updated));
-  };
-
-  const targets = exercises.map((ex) => ex.name);
+  if (loading) {
+    return (
+      <div className="page">
+        <Navbar />
+        <p className="container py-20 text-[var(--muted)]">Loading your dashboard…</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="bg-[#0F0E0E] min-h-screen" style={{ fontFamily: "Alan sans" }}>
-
+    <div className="page">
       <Navbar />
-
-      {/* Welcome + Streak + Timer Section */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] hover:scale-102 hover:border-[#483AA0] transform duration-300 border-2 gap-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
-          {/* Welcome */}
-          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-2xl sm:text-3xl md:text-5xl font-bold hover:border-[#483AA0] transform duration-300">
-            <Welcome />
+      <main className="container py-8 space-y-8">
+        <header className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+          <div>
+            <p className="text-sm text-[var(--muted)] mb-1">Dashboard</p>
+            <h1 className="text-3xl sm:text-4xl font-bold">Welcome, {user?.name}</h1>
+            <p className="text-[var(--muted)] mt-1">Your training hub — logs, schedule, and progress.</p>
           </div>
-          {/* Streak */}
-          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-2xl sm:text-3xl md:text-5xl font-bold hover:border-[#483AA0] transform duration-300">
-            <Streak />
+          <div className="panel !py-4 !px-5">
+            <Streak currentStreak={streak.currentStreak} bestStreak={streak.bestStreak} />
           </div>
-          {/* Timer */}
-          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-xl sm:text-3xl md:text-6xl font-bold hover:border-[#483AA0] transform duration-300">
-            <Timer />
-          </div>
-          <div className="flex flex-col items-center justify-center p-6 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] h-60 sm:h-72 md:h-96 border-2 text-xl sm:text-3xl md:text-6xl font-bold hover:border-[#483AA0] transform duration-300">
-            <Quotes />
-          </div>
+        </header>
 
-        </div>
-      </section>
+        {error && <p className="text-red-400 text-sm">{error}</p>}
+        {importNote && (
+          <p className="text-sm text-[var(--muted)] panel !py-3">{importNote}</p>
+        )}
 
-      {/* Exercises + Chart Section */}
-      <section className="flex flex-col md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-8 hover:scale-102 hover:border-[#483AA0]">
-        {/* Left Side: Input + List */}
-        <div className="flex-1">
-          <p className="font-bold text-3xl "> <span className="text-[#483AA0]">Write the exercises </span>you need to improve in and track the improvements using the charts</p>
-          <br />
-          <hr />
-
-          <h2 className="p-2 text-lg sm:text-xl md:text-2xl ">Today's Exercises</h2>
-          <ExerciseInput onAdd={handleAdd} />
-          <div className="mt-4 w-full max-w-full sm:max-w-lg h-56 sm:h-72 md:h-80 overflow-y-auto">
-            <ul className="space-y-2">
-              {exercises.map((ex) => (
-                <li
-                  key={ex.id}
-                  className="p-3 bg-[#1A1919] rounded flex justify-between items-center text-sm sm:text-base"
-                >
-                  <div>
-                    <strong>{ex.name}</strong> - Sets: {ex.sets}, Reps: {ex.reps}, Weight: {ex.weight}, ({ex.date})
-                  </div>
-                  <button
-                    onClick={() => handleDelete(ex.id)}
-                    className="cursor-pointer ml-4 bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded text-xs sm:text-sm"
+        <section className="grid lg:grid-cols-3 gap-4">
+          <div className="panel lg:col-span-2">
+            <div className="section-head">
+              <h2>Today&apos;s log</h2>
+              <p>Record sets after each exercise. Streak updates when you log.</p>
+            </div>
+            <ExerciseInput onAdd={handleAddExercise} initialName={pendingExercise} />
+            <div className="mt-4 max-h-64 overflow-y-auto space-y-2">
+              {exercises.length === 0 ? (
+                <p className="empty">No exercises logged yet.</p>
+              ) : (
+                exercises.map((ex) => (
+                  <div
+                    key={ex.id}
+                    className="flex justify-between items-center gap-3 p-3 rounded-xl bg-[var(--surface-2)] border border-[var(--border)]"
                   >
-                    Delete
-                  </button>
-                </li>
-              ))}
-            </ul>
+                    <div className="text-sm sm:text-base">
+                      <strong>{ex.name}</strong>
+                      <span className="text-[var(--muted)]">
+                        {" "}
+                        · {ex.sets}×{ex.reps} @ {ex.weight} kg · {ex.date}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      className="btn btn-danger py-1 px-3 text-xs"
+                      onClick={async () => {
+                        await api.deleteExercise(ex.id);
+                        await refresh();
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
           </div>
-        </div>
-
-        {/* Right Side: Chart */}
-        <div className="flex-1 flex justify-center items-start mt-10 md:mt-0 ">
-          <div className="w-full max-w-md h-64 sm:h-80 md:h-96">
-            <h2 className="text-lg sm:text-xl font-bold mb-4 text-[#ccc8e6]">Exercise Tracking Chart</h2>
-            <ExerciseChart targets={targets} />
+          <div className="panel">
+            <RestTimer />
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Workout Schedule */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
-        <div className="flex-row">
+        <section className="grid lg:grid-cols-2 gap-4">
+          <div className="panel">
+            <div className="section-head">
+              <h2>Progress</h2>
+              <p>Weight and volume over time for each lift.</p>
+            </div>
+            <ProgressChart exercises={exercises} />
+          </div>
+          <div className="panel">
+            <div className="section-head">
+              <h2>Personal records</h2>
+              <p>Best estimated efforts by exercise.</p>
+            </div>
+            <PersonalRecords records={prs} />
+          </div>
+        </section>
 
-          <p className="font-bold text-3xl sm:text-2xl md:text-2xl"> <span className="text-[#483AA0]">Create your workout </span> routine and record your progress </p>
-          <br />
-          <hr />
-          <WorkoutSchedule />
-        </div>
-      </section>
+        <section className="panel">
+          <div className="section-head">
+            <h2>Weekly schedule</h2>
+            <p>Plan the week, then start a session when you&apos;re ready.</p>
+          </div>
+          <WorkoutSchedule
+            schedules={schedules}
+            onAdd={async (form) => {
+              await api.addSchedule(form);
+              await refresh();
+            }}
+            onDelete={async (id) => {
+              await api.deleteSchedule(id);
+              await refresh();
+            }}
+            onStart={(s) => {
+              setPendingExercise(s.workoutName);
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+          />
+        </section>
 
-      {/* BMR Calculation */}
-      <section className="flex flex-col justify-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
-        <div className="flex-row">
+        <section className="grid lg:grid-cols-2 gap-4">
+          <div className="panel">
+            <div className="section-head">
+              <h2>Body weight</h2>
+              <p>Simple trend line for check-ins.</p>
+            </div>
+            <BodyWeight
+              entries={bodyWeights}
+              onAdd={async (body) => {
+                await api.addBodyWeight(body);
+                await refresh();
+              }}
+              onDelete={async (id) => {
+                await api.deleteBodyWeight(id);
+                await refresh();
+              }}
+            />
+          </div>
+          <div className="panel">
+            <div className="section-head">
+              <h2>Daily challenges</h2>
+              <p>Up to three focus tasks for today.</p>
+            </div>
+            <DailyChallenges
+              challenges={challenges}
+              onAdd={async (text) => {
+                await api.addChallenge({ text });
+                await refresh();
+              }}
+              onToggle={async (id, completed) => {
+                await api.updateChallenge(id, { completed });
+                await refresh();
+              }}
+              onReset={async () => {
+                if (window.confirm("Reset today's challenges?")) {
+                  await api.resetChallenges();
+                  await refresh();
+                }
+              }}
+            />
+          </div>
+        </section>
 
-          <p className="font-bold text-2xl sm:text-2xl md:text-2xl"> <span className="text-[#483AA0]">BMR Calculator —  </span> Find out how many calories your body burns at rest to plan your fitness goals smarter. </p>
-          <br />
-          <hr />
-          <Bmrcalculation />
-
-        </div>
-      </section>
-
-      {/* Daily Challenges */}
-      <section className="flex flex-col justify-center items-center md:flex-row bg-[#0F0E0E] text-[#ccc8e6] px-4 sm:px-8 md:px-20 py-10 m-4 sm:m-6 md:m-10 rounded-4xl shadow-[5px_5px_0px_0px_rgba(109,40,217)] transform duration-300 border-2 gap-6 hover:scale-102 hover:border-[#483AA0]">
-        
-        <div className="flex-row place-items-center">
-
-          <p className="text-2xl font-bold p-2"><span className="text-[#483AA0]">Daily 3 Challenges — </span> Get three fresh daily tasks to stay active and motivated.</p>
-          <br />
-          <hr className="border-t border-white w-full my-2" />
-
-          
-             <DailyChallenges />
-
-        </div>
-      </section>
-
-      <footer className="bg-[#0F0E0E] h-5"></footer>
+        <section className="panel">
+          <div className="section-head">
+            <h2>BMR calculator</h2>
+            <p>Estimate resting calories to plan nutrition around training.</p>
+          </div>
+          <BMR />
+        </section>
+      </main>
     </div>
   );
 }
-
-export default Dashboard;

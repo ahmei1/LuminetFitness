@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-
-const WorkoutExplorer = () => {
-  const [workouts, setWorkouts] = useState({
+export const workouts = {
     chest: [
       { id: 1, name: "Bench Press", img: "/tools/man-lifting-weights-chest.jpg", description: "The bench press is a compound exercise that involves the pectoralis major, anterior deltoids, and triceps brachii. It builds strength and encourages hypertrophy of these muscles." },
       { id: 2, name: "Incline Dumbbell Press", img: "/tools/Dumbbell-Incline-Bench-Press-scaled.jpg", description: "The incline dumbbell press is a free weight exercise that primarily targets the upper portion of the pectoral muscles (chest), as well as the shoulders and triceps." },
@@ -59,50 +56,6 @@ const WorkoutExplorer = () => {
       { id: 5, name: "Triceps Dips", img: "/tools/R (13).gif", description: "A bodyweight exercise that builds triceps, shoulders, and chest strength." },
       { id: 6, name: "Kickbacks", img: "/tools/R (14).gif", description: "An isolation exercise that targets the triceps muscles." },
     ],
-  });
+  };
 
-  const [selected, setSelected] = useState("chest");
-
-  return (
-    <div className="bg-[#0F0E0E] text-[#ccc8e6] px-8 py-10 m-8 rounded-3xl border-2 border-[#483AA0] shadow-[5px_5px_0px_0px_rgba(109,40,217)]">
-      <h1 className="text-4xl font-bold text-center mb-6">Workout Explorer</h1>
-
-      {/* Category Buttons */}
-      <div className="flex flex-wrap justify-center gap-3 mb-10">
-        {Object.keys(workouts).map((muscle) => (
-          <button
-            key={muscle}
-            onClick={() => setSelected(muscle)}
-            className={`px-5 py-2 rounded-xl text-sm sm:text-base font-semibold transition-all hover:border-[#483AA0] border-2 border-[#2A2930] duration-300 cursor-pointer ${
-              selected === muscle
-                ? "bg-[#6D28D9] text-white"
-                : "bg-[#1A1919] hover:bg-[#2A2930]"
-            }`}
-          >
-            {muscle.charAt(0).toUpperCase() + muscle.slice(1)}
-          </button>
-        ))}
-      </div>
-
-      {/* Exercise Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 justify-items-center">
-        {workouts[selected].map((exercise) => (
-          <div
-            key={exercise.id}
-            className="bg-[#1A1919] p-4 rounded-2xl w-72 text-center hover:border-[#6D28D9] hover:scale-105 transform transition duration-300 shadow-md border-2 border-[#2E2B3B]"
-          >
-            <img
-              src={exercise.img}
-              alt={exercise.name}
-              className="w-full h-45 object-cover rounded-xl mb-3 transition-transform duration-300"
-            />
-            <h2 className="text-xl font-semibold">{exercise.name}</h2>
-            <p className="text-sm text-gray-400 mt-2">{exercise.description}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-export default WorkoutExplorer;
+export const muscleGroups = Object.keys(workouts);

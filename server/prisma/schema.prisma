@@ -1,0 +1,85 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id           String           @id @default(cuid())
+  name         String
+  email        String           @unique
+  passwordHash String
+  createdAt    DateTime         @default(now())
+  exerciseLogs ExerciseLog[]
+  schedules    Schedule[]
+  challenges   Challenge[]
+  streak       Streak?
+  personalRecords PersonalRecord[]
+  bodyWeights  BodyWeight[]
+}
+
+model ExerciseLog {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  sets      Int
+  reps      Int
+  weight    Float
+  date      String
+  createdAt DateTime @default(now())
+}
+
+model Schedule {
+  id          String @id @default(cuid())
+  userId      String
+  user        User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  workoutName String
+  dayOfWeek   String
+  time        String
+  duration    String?
+  notes       String?
+}
+
+model Challenge {
+  id        String  @id @default(cuid())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  text      String
+  date      String
+  completed Boolean @default(false)
+}
+
+model Streak {
+  id             String @id @default(cuid())
+  userId         String @unique
+  user           User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  currentStreak  Int    @default(0)
+  bestStreak     Int    @default(0)
+  lastActiveDate String?
+}
+
+model PersonalRecord {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name      String
+  weight    Float
+  reps      Int
+  date      String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, name])
+}
+
+model BodyWeight {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  weight    Float
+  date      String
+  createdAt DateTime @default(now())
+}
